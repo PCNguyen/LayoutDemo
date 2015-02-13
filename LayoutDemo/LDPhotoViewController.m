@@ -67,7 +67,6 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
 @interface LDPhotoViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 @property (strong, nonatomic) UICollectionView *photoCollectionView;
-@property (assign, nonatomic, getter=isFullScreen) BOOL fullScreen;
 
 @end
 
@@ -78,8 +77,6 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
 - (void)loadView
 {
   [super loadView];
-  
-  self.fullScreen = NO;
   [self.view addSubview:self.photoCollectionView];
 }
 
@@ -126,20 +123,6 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
   
   [photoCell setNumber:indexPath.row];
   return photoCell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-  if (indexPath.row % 2 == 0) {
-    self.fullScreen = !self.isFullScreen;
-    
-    LDPhotoLayout *photoLayout = (LDPhotoLayout *)collectionView.collectionViewLayout;
-    if (self.fullScreen) {
-      [photoLayout zoomItemAtIndexPath:indexPath size:collectionView.bounds.size];
-    } else {
-      [photoLayout reset];
-    }
-  }
 }
 
 @end

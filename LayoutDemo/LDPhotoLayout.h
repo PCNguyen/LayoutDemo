@@ -11,6 +11,6 @@
 @interface LDPhotoLayout : UICollectionViewFlowLayout
 
 - (void)zoomItemAtIndexPath:(NSIndexPath *)indexPath size:(CGSize)size;
-- (void)reset;
+- (void)resetItemSize;
 
 @end
