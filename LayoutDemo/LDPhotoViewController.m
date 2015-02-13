@@ -21,7 +21,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    self.contentView.backgroundColor = [UIColor lightGrayColor];
+    
   }
   
   return self;
@@ -89,6 +89,12 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
   LDPhotoCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:LDPhotoViewControllerCellIdentifier forIndexPath:indexPath];
+  
+  if (indexPath.row % 2 == 0) {
+    photoCell.contentView.backgroundColor = [UIColor redColor];
+  } else {
+    photoCell.contentView.backgroundColor = [UIColor blueColor];
+  }
   
   return photoCell;
 }
