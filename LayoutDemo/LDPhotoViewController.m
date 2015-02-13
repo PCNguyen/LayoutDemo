@@ -7,12 +7,15 @@
 //
 
 #import "LDPhotoViewController.h"
+#import "LDPhotoLayout.h"
 
 /********************************
  LDPhotoCell
  *******************************/
 
 @interface LDPhotoCell : UICollectionViewCell
+
+@property (nonatomic, strong) UILabel *numberLabel;
 
 @end
 
@@ -21,10 +24,33 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    
+    [self.contentView addSubview:self.numberLabel];
   }
   
   return self;
+}
+
+- (void)layoutSubviews
+{
+  [super layoutSubviews];
+  self.numberLabel.frame = self.bounds;
+}
+
+- (UILabel *)numberLabel
+{
+  if (!_numberLabel) {
+    _numberLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _numberLabel.backgroundColor = [UIColor clearColor];
+    _numberLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    _numberLabel.textAlignment = NSTextAlignmentCenter;
+  }
+  
+  return _numberLabel;
+}
+
+- (void)setNumber:(NSInteger)number
+{
+  self.numberLabel.text = [NSString stringWithFormat:@"%d", (int)number];
 }
 
 @end
@@ -41,6 +67,7 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
 @interface LDPhotoViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 @property (strong, nonatomic) UICollectionView *photoCollectionView;
+@property (assign, nonatomic, getter=isFullScreen) BOOL fullScreen;
 
 @end
 
@@ -52,6 +79,7 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
 {
   [super loadView];
   
+  self.fullScreen = NO;
   [self.view addSubview:self.photoCollectionView];
 }
 
@@ -66,7 +94,7 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
 - (UICollectionView *)photoCollectionView
 {
   if (!_photoCollectionView) {
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    LDPhotoLayout *flowLayout = [[LDPhotoLayout alloc] init];
     flowLayout.itemSize = LDPhotoViewControllerCellSize;
     
     _photoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
@@ -96,7 +124,22 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
     photoCell.contentView.backgroundColor = [UIColor blueColor];
   }
   
+  [photoCell setNumber:indexPath.row];
   return photoCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.row % 2 == 0) {
+    self.fullScreen = !self.isFullScreen;
+    
+    LDPhotoLayout *photoLayout = (LDPhotoLayout *)collectionView.collectionViewLayout;
+    if (self.fullScreen) {
+      [photoLayout zoomItemAtIndexPath:indexPath size:collectionView.bounds.size];
+    } else {
+      [photoLayout reset];
+    }
+  }
 }
 
 @end
