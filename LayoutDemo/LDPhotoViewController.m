@@ -8,6 +8,7 @@
 
 #import "LDPhotoViewController.h"
 #import "LDPhotoLayout.h"
+#import "LDColorPalleteViewController.h"
 
 /********************************
  LDPhotoCell
@@ -64,7 +65,7 @@
 static NSString *const LDPhotoViewControllerCellIdentifier = @"LDPhotoViewControllerCellIdentifier";
 static NSInteger const LDPhotoViewControllerItemCount = 120;
 
-@interface LDPhotoViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface LDPhotoViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, LDColorPalletViewControllerDelegate>
 
 @property (strong, nonatomic) UICollectionView *photoCollectionView;
 
@@ -116,13 +117,22 @@ static NSInteger const LDPhotoViewControllerItemCount = 120;
   LDPhotoCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:LDPhotoViewControllerCellIdentifier forIndexPath:indexPath];
   
   if (indexPath.row % 2 == 0) {
-    photoCell.contentView.backgroundColor = [UIColor redColor];
-  } else {
     photoCell.contentView.backgroundColor = [UIColor blueColor];
+  } else {
+    photoCell.contentView.backgroundColor = [UIColor redColor];
   }
   
   [photoCell setNumber:indexPath.row];
   return photoCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.row % 2 == 0) {
+    LDColorPalleteViewController *colorPallete = [[LDColorPalleteViewController alloc] init];
+    colorPallete.delegate = self;
+    [self.navigationController pushViewController:colorPallete animated:YES];
+  }
 }
 
 @end

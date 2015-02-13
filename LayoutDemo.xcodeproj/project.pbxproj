@@ -15,6 +15,7 @@
 		4F388ABD1A8DC073003D185A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F388ABB1A8DC073003D185A /* LaunchScreen.xib */; };
 		4F388AC91A8DC073003D185A /* LayoutDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F388AC81A8DC073003D185A /* LayoutDemoTests.m */; };
 		4FD410361A8DD99D0031EB30 /* LDPhotoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD410351A8DD99D0031EB30 /* LDPhotoLayout.m */; };
+		4FD410391A8DE0EA0031EB30 /* LDColorPalleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD410381A8DE0EA0031EB30 /* LDColorPalleteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		4F388AC81A8DC073003D185A /* LayoutDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutDemoTests.m; sourceTree = "<group>"; };
 		4FD410341A8DD99D0031EB30 /* LDPhotoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDPhotoLayout.h; sourceTree = "<group>"; };
 		4FD410351A8DD99D0031EB30 /* LDPhotoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDPhotoLayout.m; sourceTree = "<group>"; };
+		4FD410371A8DE0EA0031EB30 /* LDColorPalleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDColorPalleteViewController.h; sourceTree = "<group>"; };
+		4FD410381A8DE0EA0031EB30 /* LDColorPalleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDColorPalleteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				4FD410351A8DD99D0031EB30 /* LDPhotoLayout.m */,
 				4F388AB31A8DC073003D185A /* LDPhotoViewController.h */,
 				4F388AB41A8DC073003D185A /* LDPhotoViewController.m */,
+				4FD410371A8DE0EA0031EB30 /* LDColorPalleteViewController.h */,
+				4FD410381A8DE0EA0031EB30 /* LDColorPalleteViewController.m */,
 				4F388AB61A8DC073003D185A /* Main.storyboard */,
 				4F388AB91A8DC073003D185A /* Images.xcassets */,
 				4F388ABB1A8DC073003D185A /* LaunchScreen.xib */,
@@ -227,6 +232,7 @@
 				4F388AB51A8DC073003D185A /* LDPhotoViewController.m in Sources */,
 				4F388AB21A8DC073003D185A /* AppDelegate.m in Sources */,
 				4FD410361A8DD99D0031EB30 /* LDPhotoLayout.m in Sources */,
+				4FD410391A8DE0EA0031EB30 /* LDColorPalleteViewController.m in Sources */,
 				4F388AAF1A8DC073003D185A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
