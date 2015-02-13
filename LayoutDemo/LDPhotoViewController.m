@@ -6,22 +6,24 @@
 //  Copyright (c) 2015 PC. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LDPhotoViewController.h"
 
-@interface ViewController ()
+/*******************************
+ 
+ *******************************/
+
+@interface LDPhotoViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LDPhotoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
